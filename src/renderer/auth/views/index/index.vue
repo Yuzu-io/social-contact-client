@@ -1,6 +1,7 @@
 <template>
   <div>
     <button @click="switchWindow">切换窗口</button>
+    <t-button>确定</t-button>
   </div>
 </template>
 
