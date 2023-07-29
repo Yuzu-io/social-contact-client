@@ -18,7 +18,7 @@ if (!gotTheLock) {
 
 function createWindow(): void {
   // Create the browser window.
-  win = WindowFactory.createWindow('auth')
+  win = WindowFactory.createWindow(ElectronWindowType.Auth)
 }
 
 // 注册事件
