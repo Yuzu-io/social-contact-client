@@ -5,7 +5,9 @@
       <div class="top_title">social</div>
       <div class="top_operation">
         <!-- 退出按钮 -->
-        <div class="close-bold" @click="closeWindow">X</div>
+        <div class="close-bold" @click="closeWindow">
+          <mdicon name="window-close" size="20" />
+        </div>
       </div>
     </div>
     <!-- 内容区 -->
@@ -74,13 +76,5 @@ const closeWindow = () => {
       }
     }
   }
-}
-
-// 内容区
-.content {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
