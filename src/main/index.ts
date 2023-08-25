@@ -3,7 +3,7 @@ import { electronApp, optimizer } from '@electron-toolkit/utils'
 
 // 引入模块
 import { switchWindow } from './modules/switch'
-import DataPool from './modules/datapool'
+import DataPool from './modules/dataPool'
 
 import CommonWindow from './window/common'
 import { ElectronWindowType } from './window-type'
