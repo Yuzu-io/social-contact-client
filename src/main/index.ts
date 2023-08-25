@@ -1,14 +1,13 @@
-import { app, BrowserWindow, ipcMain, IpcMainEvent } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 
 // 引入模块
-import { switchWindow } from './modules/switch'
-import DataPool from './modules/dataPool'
+import { DataPool } from './modules/dataPool'
 
 import CommonWindow from './window/common'
 import { ElectronWindowType } from './window-type'
-import WindowFactory from './window'
-import { quitWindow } from './modules/close'
+import WindowFactory from './window/windowFactory'
+import { WindowOperation } from './modules/windowOperation'
 
 let win: CommonWindow | null = null
 
@@ -21,15 +20,6 @@ function createWindow(): void {
   // Create the browser window.
   win = WindowFactory.createWindow(ElectronWindowType.Auth)
 }
-
-// 注册事件
-quitWindow()
-DataPool
-
-// 切换窗口
-ipcMain.on('switch:window', (_event: IpcMainEvent, winType: ElectronWindowType) => {
-  win = switchWindow(winType, win?.getWindow() as BrowserWindow)
-})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -46,6 +36,10 @@ app.whenReady().then(() => {
   })
 
   createWindow()
+
+  // 注册事件
+  new WindowOperation(win as CommonWindow)
+  new DataPool()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

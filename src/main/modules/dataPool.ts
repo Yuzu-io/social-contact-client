@@ -1,6 +1,6 @@
 import { IpcMainInvokeEvent, ipcMain } from 'electron'
 
-class DataPool {
+export class DataPool {
   private token: string
 
   constructor() {
@@ -21,5 +21,3 @@ class DataPool {
     })
   }
 }
-
-export default new DataPool()
