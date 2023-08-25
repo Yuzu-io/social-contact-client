@@ -18,11 +18,11 @@
 </template>
 
 <script setup lang="ts">
-const { ipcRenderer } = window.electron
+import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
 
 // 关闭窗口
 const closeWindow = () => {
-  ipcRenderer.send('quit:application')
+  ElectronWindowHelper.close()
 }
 </script>
 

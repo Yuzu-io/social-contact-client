@@ -28,8 +28,9 @@
 <script setup lang="ts">
 import { MessagePlugin, SubmitContext } from 'tdesign-vue-next'
 import { reactive } from 'vue'
-
-const { ipcRenderer } = window.electron
+import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
+import ElectronTransferDataHelper from '@renderer/src/shared/helper/electron-transfer-data'
+import { ElectronWindowType } from '@main/window-type'
 
 const formData = reactive({
   account: '',
@@ -41,8 +42,10 @@ const onSubmit = (context: SubmitContext) => {
   if (validateResult === true) {
     MessagePlugin.success('提交成功')
     setTimeout(() => {
-      ipcRenderer.invoke('push:transfer:data', 'a11111111')
-      ipcRenderer.send('switch:window', 'main')
+      // 传递数据
+      ElectronTransferDataHelper.sendUserInfoData('1111')
+      // 切换窗口
+      ElectronWindowHelper.switch(ElectronWindowType.Main)
     }, 2000)
   } else {
     console.log('Validate Errors: ', firstError, validateResult)
