@@ -5,14 +5,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/main',
     name: 'MainLayout',
-    component: () => import('@renderer/layouts/main/MainLayout.vue'),
+    component: () => import('@renderer/src/layouts/main/MainLayout.vue'),
     meta: { window: ElectronWindowType.Main },
     redirect: 'index',
     children: [
       {
         path: '/index',
         name: 'index',
-        component: () => import('@renderer/views/index/index.vue'),
+        component: () => import('@renderer/src/views/index/index.vue'),
         meta: { title: '首页' }
       }
     ]
@@ -20,14 +20,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/auth',
     name: 'AuthLayout',
-    component: () => import('@renderer/layouts/auth/AuthLayout.vue'),
+    component: () => import('@renderer/src/layouts/auth/AuthLayout.vue'),
     meta: { window: ElectronWindowType.Auth },
     redirect: 'login',
     children: [
       {
         path: '/login',
         name: 'login',
-        component: () => import('@renderer/views/login/index.vue'),
+        component: () => import('@renderer/src/views/login/index.vue'),
         meta: { title: '首页' }
       }
     ]
