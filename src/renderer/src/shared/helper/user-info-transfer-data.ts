@@ -1,6 +1,6 @@
 const { ipcRenderer } = window.electron
 
-class ElectronTransferDataHelper {
+class UserInfoTransferDataHelper {
   sendUserInfoData(data: string) {
     ipcRenderer.invoke('send:user:info:data', data)
   }
@@ -10,4 +10,4 @@ class ElectronTransferDataHelper {
   }
 }
 
-export default new ElectronTransferDataHelper()
+export default new UserInfoTransferDataHelper()

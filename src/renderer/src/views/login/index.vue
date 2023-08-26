@@ -29,7 +29,7 @@
 import { MessagePlugin, SubmitContext } from 'tdesign-vue-next'
 import { reactive } from 'vue'
 import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
-import ElectronTransferDataHelper from '@renderer/src/shared/helper/electron-transfer-data'
+import UserInfoTransferDataHelper from '@renderer/src/shared/helper/user-info-transfer-data'
 import { ElectronWindowType } from '@main/window-type'
 
 const formData = reactive({
@@ -43,7 +43,7 @@ const onSubmit = (context: SubmitContext) => {
     MessagePlugin.success('提交成功')
     setTimeout(() => {
       // 传递数据
-      ElectronTransferDataHelper.sendUserInfoData('1111')
+      UserInfoTransferDataHelper.sendUserInfoData('1111')
       // 切换窗口
       ElectronWindowHelper.switch(ElectronWindowType.Main)
     }, 2000)
@@ -69,3 +69,4 @@ const onSubmit = (context: SubmitContext) => {
   }
 }
 </style>
+@renderer/src/shared/helper/user-transfer-data
