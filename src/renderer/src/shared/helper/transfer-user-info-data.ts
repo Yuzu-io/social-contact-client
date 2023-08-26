@@ -1,7 +1,9 @@
+import { UserInfo } from '@/types/index'
+
 const { ipcRenderer } = window.electron
 
 class TransferUserInfoDataHelper {
-  sendUserInfoData(data: string) {
+  sendUserInfoData(data: UserInfo) {
     ipcRenderer.invoke('send:user:info:data', data)
   }
 

@@ -42,8 +42,13 @@ const onSubmit = (context: SubmitContext) => {
   if (validateResult === true) {
     MessagePlugin.success('提交成功')
     setTimeout(() => {
+      const userInfo = {
+        username: 'yuzu',
+        sex: '男',
+        token: '1111111111'
+      }
       // 传递数据
-      TransferUserInfoDataHelper.sendUserInfoData('1111')
+      TransferUserInfoDataHelper.sendUserInfoData(userInfo)
       // 切换窗口
       ElectronWindowHelper.switch(ElectronWindowType.Main)
     }, 2000)
