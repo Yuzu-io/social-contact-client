@@ -2,7 +2,7 @@ import { app, BrowserWindow } from 'electron'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 
 // 引入模块
-import { UserDataPool } from './modules/userDataPool'
+import { UserInfoDataPool } from './modules/userInfoDataPool'
 
 import CommonWindow from './window/common'
 import { ElectronWindowType } from './window-type'
@@ -39,7 +39,7 @@ app.whenReady().then(() => {
 
   // 注册事件
   new WindowOperation(win as CommonWindow)
-  new UserDataPool()
+  new UserInfoDataPool()
   console.log('注册事件')
 
   app.on('activate', function () {

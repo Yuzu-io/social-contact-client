@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import ElectronTransferDataHelper from '@renderer/src/shared/helper/electron-transfer-data'
+import TransferUserInfoDataHelper from '@renderer/src/shared/helper/transfer-user-info-data'
 import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
 import { ElectronWindowType } from '@main/window-type'
 import { reactive } from 'vue'
@@ -28,7 +28,7 @@ onMounted(() => {
 })
 
 async function demo() {
-  data.token = await ElectronTransferDataHelper.getUserInfoData()
+  data.token = await TransferUserInfoDataHelper.getUserInfoData()
 }
 </script>
 
