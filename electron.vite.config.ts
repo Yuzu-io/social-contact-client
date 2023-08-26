@@ -18,7 +18,8 @@ export default defineConfig({
       alias: {
         '@renderer': resolve('src/renderer'),
         '@preload': resolve('src/preload'),
-        '@main': resolve('src/main')
+        '@main': resolve('src/main'),
+        '@': resolve('src/')
       }
     },
     plugins: [
