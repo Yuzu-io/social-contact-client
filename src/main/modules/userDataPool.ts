@@ -1,6 +1,6 @@
 import { IpcMainInvokeEvent, ipcMain } from 'electron'
 
-export class DataPool {
+export class UserDataPool {
   private token: string
 
   constructor() {

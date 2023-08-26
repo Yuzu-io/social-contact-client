@@ -2,7 +2,7 @@ import { app, BrowserWindow } from 'electron'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 
 // 引入模块
-import { DataPool } from './modules/dataPool'
+import { UserDataPool } from './modules/userDataPool'
 
 import CommonWindow from './window/common'
 import { ElectronWindowType } from './window-type'
@@ -39,7 +39,8 @@ app.whenReady().then(() => {
 
   // 注册事件
   new WindowOperation(win as CommonWindow)
-  new DataPool()
+  new UserDataPool()
+  console.log('注册事件')
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
