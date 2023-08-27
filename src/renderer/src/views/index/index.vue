@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ data.token }}
+    {{ userInfo }}
   </div>
   <div>
     <button @click="switchWindow">切换窗口</button>
@@ -11,10 +11,13 @@
 import TransferUserInfoDataHelper from '@renderer/src/shared/helper/transfer-user-info-data'
 import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
 import { ElectronWindowType } from '@main/window-type'
+import { UserInfo } from '@/types/index'
 import { reactive } from 'vue'
 import { onMounted } from 'vue'
 
-const data = reactive({
+const userInfo = reactive<UserInfo>({
+  username: '',
+  sex: '',
   token: ''
 })
 
@@ -28,7 +31,10 @@ onMounted(() => {
 })
 
 async function demo() {
-  data.token = await TransferUserInfoDataHelper.getUserInfoData()
+  const data: UserInfo = await TransferUserInfoDataHelper.getUserInfoData()
+  userInfo.username = data.username
+  userInfo.sex = data.sex
+  userInfo.token = data.token
 }
 </script>
 
