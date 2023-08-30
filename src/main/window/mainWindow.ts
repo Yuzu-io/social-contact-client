@@ -8,7 +8,9 @@ export default class MainWindow extends CommonWindow {
   constructor() {
     super({
       width: 1200,
-      height: 800,
+      minWidth: 860,
+      height: 700,
+      minHeight: 500,
       show: false,
       frame: false, // 无边框
       ...(process.platform === 'linux' ? { icon } : {}),
