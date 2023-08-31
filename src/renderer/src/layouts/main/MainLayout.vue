@@ -34,14 +34,20 @@ const clickMenu = (index: number) => {
 </script>
 
 <style lang="scss" scoped>
+$menu-shadow: #e0e1e2;
+
 .main {
   width: 100%;
-  height: 100%;
-  // -webkit-app-region: drag;
+  height: 100vh;
+  min-height: 500px;
+  overflow: hidden;
   display: flex;
+  -webkit-app-region: drag;
 
   .left {
     width: 60px;
+    background-color: #ececec;
+    padding: 30px 0 0 0;
 
     .user {
       width: 60px;
@@ -49,12 +55,14 @@ const clickMenu = (index: number) => {
       line-height: 60px;
       text-align: center;
       margin: 0 0 80px;
+      -webkit-app-region: no-drag;
     }
 
     .menu-list {
       display: flex;
       flex-direction: column;
       align-items: center;
+      -webkit-app-region: no-drag;
 
       &__item {
         width: 40px;
@@ -69,12 +77,12 @@ const clickMenu = (index: number) => {
         }
 
         &:hover {
-          background-color: #e0e1e2;
+          background-color: $menu-shadow;
         }
       }
 
       &__item--active {
-        background-color: #e0e1e2;
+        background-color: $menu-shadow;
 
         .mdi {
           color: #003cab;
