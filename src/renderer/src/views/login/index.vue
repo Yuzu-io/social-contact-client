@@ -5,7 +5,7 @@
       <t-form-item name="account">
         <t-input v-model="formData.account" clearable placeholder="请输入账户名">
           <template #prefix-icon>
-            <mdicon name="account-outline" size="16" style="color: rgba(0, 0, 0, 0.4)" />
+            <mdicon name="account-outline" size="20" style="color: rgba(0, 0, 0, 0.4)" />
           </template>
         </t-input>
       </t-form-item>
@@ -13,7 +13,7 @@
       <t-form-item name="password">
         <t-input v-model="formData.password" type="password" clearable placeholder="请输入密码">
           <template #prefix-icon>
-            <mdicon name="lock-outline" size="16" style="color: rgba(0, 0, 0, 0.4)" />
+            <mdicon name="lock-outline" size="20" style="color: rgba(0, 0, 0, 0.4)" />
           </template>
         </t-input>
       </t-form-item>
@@ -22,6 +22,9 @@
         <t-button theme="primary" type="submit" block>登录</t-button>
       </t-form-item>
     </t-form>
+    <t-space>
+      <t-link theme="primary" @click="goRegister">注册账号</t-link>
+    </t-space>
   </div>
 </template>
 
@@ -31,6 +34,9 @@ import { reactive } from 'vue'
 import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
 import TransferUserInfoDataHelper from '@renderer/src/shared/helper/transfer-user-info-data'
 import { ElectronWindowType } from '@main/window-type'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const formData = reactive({
   account: '',
@@ -57,6 +63,12 @@ const onSubmit = (context: SubmitContext) => {
     MessagePlugin.warning(firstError as string)
   }
 }
+
+const goRegister = () => {
+  router.push({
+    path: '/register'
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -71,6 +83,10 @@ const onSubmit = (context: SubmitContext) => {
 
   .t-form {
     width: 220px;
+  }
+
+  .t-space {
+    margin: 20px 0 0 0;
   }
 }
 </style>
