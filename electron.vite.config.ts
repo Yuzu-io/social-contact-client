@@ -22,6 +22,13 @@ export default defineConfig({
         '@': resolve('src/')
       }
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@renderer/src/styles/global.scss";`
+        }
+      }
+    },
     plugins: [
       vue(),
       AutoImport({
