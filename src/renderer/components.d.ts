@@ -7,9 +7,13 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    HistorySession: typeof import('./src/components/HistorySession/index.vue')['default']
     MenuList: typeof import('./src/components/MenuList/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Scrollbar: typeof import('./src/components/Scrollbar/index.vue')['default']
+    ScrollBar: typeof import('./src/components/ScrollBar/index.vue')['default']
+    SessionList: typeof import('./src/components/SessionList/index.vue')['default']
     TAvatar: typeof import('tdesign-vue-next')['Avatar']
     TButton: typeof import('tdesign-vue-next')['Button']
     TForm: typeof import('tdesign-vue-next')['Form']
