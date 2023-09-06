@@ -11,12 +11,12 @@
 
       <SessionList></SessionList>
     </div>
-    <div class="content">
-      <div>
+    <div class="container">
+      <div class="chat-window">
         {{ userInfo }}
-      </div>
-      <div>
-        <button @click="switchWindow">切换窗口</button>
+        <div>
+          <button @click="switchWindow">切换窗口</button>
+        </div>
       </div>
     </div>
   </div>
@@ -72,9 +72,15 @@ async function demo() {
     }
   }
 
-  .content {
+  .container {
     min-width: 600px;
     padding: 30px 0 0 0;
+
+    .chat-window {
+      -webkit-app-region: no-drag;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 </style>

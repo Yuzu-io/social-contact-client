@@ -25,7 +25,7 @@ const calcScrollOffset = (e: Event) => {
   const wrapHeight = scrollBarArea.value?.scrollHeight as number
   const wrapOffset = (e.target as HTMLElement).scrollTop
   const thumbOffset = (wrapOffset * viewHeight) / wrapHeight
-    ; (scrollBarThumb.value as HTMLElement).style.top = `${thumbOffset}px`
+  ;(scrollBarThumb.value as HTMLElement).style.top = `${thumbOffset}px`
 }
 
 /**
@@ -36,15 +36,31 @@ const calcScrollBarHeight = () => {
   const wrapHeight = scrollBarArea.value?.scrollHeight as number
   const trackHeight = scrollBarTrack.value?.scrollHeight as number
   const thumbHeight = (trackHeight * viewHeight) / wrapHeight
-    ; (scrollBarThumb.value as HTMLElement).style.height = `${thumbHeight}px`
+  ;(scrollBarThumb.value as HTMLElement).style.height = `${thumbHeight}px`
 }
 
+let offsetY = 0
+let downY = 0
+let moveY = 0
+let originY = 0
 const dragSlider = (e: MouseEvent) => {
-  const offsetY = 0
-  const downY = 0
-  const moveY = 0
-  const originY = 0
-  console.log(e);
+  downY = e.clientY //记录点击位置
+  originY = scrollBarArea.value?.scrollTop as number //记录原本的偏移量
+  window.addEventListener('mousemove', mousemoveListener)
+  window.addEventListener('mouseup', mouseupListener)
+}
+
+const mousemoveListener = (e: MouseEvent) => {
+  moveY = e.clientY // 获取鼠标移动时的位置
+  offsetY = moveY - downY // 计算偏移量
+  const wrapHeight = scrollBarArea.value?.scrollHeight as number
+  const trackHeight = scrollBarTrack.value?.scrollHeight as number
+  const distance = (wrapHeight * offsetY) / trackHeight + originY
+  ;(scrollBarArea.value as HTMLElement).scrollTop = distance
+}
+const mouseupListener = () => {
+  window.removeEventListener('mousemove', mousemoveListener)
+  window.removeEventListener('mouseup', mouseupListener)
 }
 
 onMounted(() => {
@@ -86,6 +102,10 @@ window.onresize = () => {
     z-index: 99;
     opacity: 0;
     transition: opacity 0.3s;
+
+    &:active {
+      opacity: 1;
+    }
   }
 
   &__thumb {
@@ -96,6 +116,7 @@ window.onresize = () => {
     position: absolute;
     left: 0;
     top: 0;
+    user-select: none;
   }
 }
 </style>
