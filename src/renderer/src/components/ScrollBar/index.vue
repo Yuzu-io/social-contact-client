@@ -3,7 +3,7 @@
     <div ref="scrollBarArea" class="scroll-bar__area" @scroll="calcScrollOffset">
       <slot></slot>
     </div>
-    <div ref="scrollBarTrack" class="scroll-bar__track">
+    <div ref="scrollBarTrack" class="scroll-bar__track" @click="clickTrack">
       <div ref="scrollBarThumb" class="scroll-bar__thumb" @mousedown="dragSlider"></div>
     </div>
   </div>
@@ -35,7 +35,11 @@ const calcScrollBarHeight = () => {
   const viewHeight = scrollBarArea.value?.clientHeight as number
   const wrapHeight = scrollBarArea.value?.scrollHeight as number
   const trackHeight = scrollBarTrack.value?.scrollHeight as number
-  const thumbHeight = (trackHeight * viewHeight) / wrapHeight
+  let thumbHeight = (trackHeight * viewHeight) / wrapHeight
+  // 滚动条长度和轨道长度一直时隐藏滚动条 让滚动条高度为0
+  if (trackHeight === thumbHeight) {
+    thumbHeight = 0
+  }
   ;(scrollBarThumb.value as HTMLElement).style.height = `${thumbHeight}px`
 }
 
@@ -61,6 +65,19 @@ const mousemoveListener = (e: MouseEvent) => {
 const mouseupListener = () => {
   window.removeEventListener('mousemove', mousemoveListener)
   window.removeEventListener('mouseup', mouseupListener)
+}
+
+// 点击滚动条轨道
+const clickTrack = (e: PointerEvent) => {
+  if (e.target !== scrollBarTrack.value) return
+  const downTrack = e.clientY - (scrollBarThumb.value as HTMLElement).scrollHeight as number
+  const thumbHeight = scrollBarThumb.value?.scrollHeight as number
+  const trackHeight = scrollBarTrack.value?.scrollHeight as number
+  const originOffset = scrollBarArea.value?.scrollTop as number //记录原本的偏移量
+  if (downTrack > thumbHeight || downTrack < thumbHeight) {
+    const distance = thumbHeight * downTrack / trackHeight + originOffset
+    ;(scrollBarArea.value as HTMLElement).scrollTop = distance
+  }
 }
 
 onMounted(() => {
