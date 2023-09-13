@@ -13,7 +13,20 @@
     </div>
     <div class="container">
       <div class="chat-window">
-        {{ userInfo }}
+        <div class="chat-window__top">
+          <div class="title">
+            测试标题
+          </div>
+          <div class="more">
+            <mdicon name="dots-horizontal" size="24"></mdicon>
+          </div>
+        </div>
+        <div class="chat-window__bottom">
+          <div class="left">
+
+          </div>
+          <div class="right"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -64,6 +77,7 @@ async function demo() {
   }
 
   .container {
+    width: 100%;
     min-width: 600px;
     padding: 30px 0 0 0;
 
@@ -71,6 +85,49 @@ async function demo() {
       -webkit-app-region: no-drag;
       height: 100%;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      &__top{
+        height: 44px;
+        font-size: 20px;
+        padding: 0 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title{
+          flex: 1;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .more{
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+
+        }
+
+
+      }
+
+      &__bottom{
+        height: 100%;
+        display: flex;
+
+
+        .left{
+          width: 70%;
+          height: 100%;
+        }
+
+        .right{
+          width: 30%;
+          height: 100%;
+        }
+      }
     }
   }
 }
