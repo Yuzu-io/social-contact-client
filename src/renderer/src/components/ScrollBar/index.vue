@@ -68,7 +68,7 @@ const mouseupListener = () => {
 }
 
 // 点击滚动条轨道
-const clickTrack = (e: PointerEvent) => {
+const clickTrack = (e: MouseEvent) => {
   if (e.target !== scrollBarTrack.value) return
   const downTrack = e.clientY - (scrollBarThumb.value as HTMLElement).scrollHeight as number
   const thumbHeight = scrollBarThumb.value?.scrollHeight as number
