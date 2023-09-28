@@ -1,10 +1,14 @@
 import { resolve } from 'path'
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import vue from '@vitejs/plugin-vue'
+// 按需引入TDesign
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { TDesignResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin()],
+    plugins: [externalizeDepsPlugin()]
   },
   preload: {
     plugins: [externalizeDepsPlugin()]
@@ -15,16 +19,32 @@ export default defineConfig({
         '@renderer': resolve('src/renderer'),
         '@preload': resolve('src/preload'),
         '@main': resolve('src/main'),
+        '@': resolve('src/')
       }
     },
-    plugins: [vue()],
-    build: {
-      rollupOptions: {
-        input: {
-          main: resolve(__dirname, 'src/renderer/main.html'),
-          auth: resolve(__dirname, 'src/renderer/auth.html'),
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@renderer/src/styles/global.scss";`
         }
       }
-    }
+    },
+    plugins: [
+      vue(),
+      AutoImport({
+        resolvers: [
+          TDesignResolver({
+            library: 'vue-next'
+          })
+        ]
+      }),
+      Components({
+        resolvers: [
+          TDesignResolver({
+            library: 'vue-next'
+          })
+        ]
+      })
+    ]
   }
 })

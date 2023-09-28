@@ -10,7 +10,7 @@ export default class AuthWindow extends CommonWindow {
       width: 300,
       height: 450,
       show: false,
-      // frame: false, // 无边框
+      frame: false, // 无边框
       // resizable: false, // 不允许改变窗口大小
       ...(process.platform === 'linux' ? { icon } : {}),
       webPreferences: {
@@ -22,7 +22,7 @@ export default class AuthWindow extends CommonWindow {
         sandbox: false
       },
       windowType: ElectronWindowType.Auth,
-      loadUrl: (host) => `${host}/auth.html`
+      loadUrl: (host) => `${host}#auth`
     })
   }
 }
