@@ -64,7 +64,7 @@ const formData = reactive({
   code: ''
 })
 
-const onSubmit = (context: SubmitContext) => {
+const onSubmit = (context: SubmitContext): void => {
   const { validateResult, firstError } = context
   if (validateResult === true) {
     MessagePlugin.success('提交成功')
@@ -75,12 +75,12 @@ const onSubmit = (context: SubmitContext) => {
 }
 
 const { promptText, isStatus, countDown } = useCountDown()
-const sendCode = () => {
+const sendCode = (): void => {
   // 发送之后
   countDown()
 }
 
-const goLogin = () => {
+const goLogin = (): void => {
   router.push({
     path: '/login'
   })

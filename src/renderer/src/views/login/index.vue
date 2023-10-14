@@ -43,7 +43,7 @@ const formData = reactive({
   password: ''
 })
 
-const onSubmit = (context: SubmitContext) => {
+const onSubmit = (context: SubmitContext): void => {
   const { validateResult, firstError } = context
   if (validateResult === true) {
     MessagePlugin.success('提交成功')
@@ -64,7 +64,7 @@ const onSubmit = (context: SubmitContext) => {
   }
 }
 
-const goRegister = () => {
+const goRegister = (): void => {
   router.push({
     path: '/register'
   })

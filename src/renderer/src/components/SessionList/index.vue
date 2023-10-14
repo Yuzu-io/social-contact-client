@@ -10,9 +10,13 @@
             <div class="session-info__name">
               {{ item.username }}
             </div>
-            <div class="session-info__time">13:38</div>
+            <div class="session-info__time">
+              {{ item.time }}
+            </div>
           </div>
-          <div class="latest-news">测试啊啊啊啊啊啊啊啊啊</div>
+          <div class="latest-news">
+            {{ item.message }}
+          </div>
         </div>
       </div>
     </ScrollBar>
@@ -26,55 +30,81 @@ import ScrollBar from '@renderer/src/components/ScrollBar/index.vue'
 const sessionList = ref([
   {
     id: '1',
-    username: '信息工程系'
+    username: '信息工程系',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu'
+    username: 'yuzu',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   },
   {
     id: '1',
-    username: 'yuzu5'
+    username: 'yuzu5',
+    message: '测试啊啊啊啊啊啊啊啊啊',
+    time: '13:38'
   }
 ])
 </script>
@@ -132,6 +162,7 @@ $session-background-color--hover: #e7e7e7;
           text-overflow: ellipsis;
           overflow: hidden;
         }
+
         &__time {
           font-size: 10px;
           color: $text-secondary-color;

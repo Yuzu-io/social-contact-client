@@ -14,17 +14,13 @@
     <div class="container">
       <div class="chat-window">
         <div class="chat-window__top">
-          <div class="title">
-            测试标题
-          </div>
+          <div class="title">测试标题</div>
           <div class="more">
             <mdicon name="dots-horizontal" size="24"></mdicon>
           </div>
         </div>
         <div class="chat-window__bottom">
-          <div class="left">
-
-          </div>
+          <div class="left"></div>
           <div class="right"></div>
         </div>
       </div>
@@ -45,12 +41,11 @@ const userInfo = reactive<UserInfo>({
   token: ''
 })
 
-
 onMounted(() => {
   demo()
 })
 
-async function demo() {
+async function demo(): Promise<void> {
   const data: UserInfo = await TransferUserInfoDataHelper.getUserInfoData()
   userInfo.username = data.username
   userInfo.sex = data.sex
@@ -88,7 +83,7 @@ async function demo() {
       display: flex;
       flex-direction: column;
 
-      &__top{
+      &__top {
         height: 44px;
         font-size: 20px;
         padding: 0 20px;
@@ -97,33 +92,29 @@ async function demo() {
         justify-content: space-between;
         align-items: center;
 
-        .title{
+        .title {
           flex: 1;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
         }
-        .more{
+        .more {
           flex: 1;
           display: flex;
           justify-content: flex-end;
-
         }
-
-
       }
 
-      &__bottom{
+      &__bottom {
         height: 100%;
         display: flex;
 
-
-        .left{
+        .left {
           width: 70%;
           height: 100%;
         }
 
-        .right{
+        .right {
           width: 30%;
           height: 100%;
         }
