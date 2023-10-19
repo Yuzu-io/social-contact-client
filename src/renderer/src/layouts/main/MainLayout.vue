@@ -2,12 +2,28 @@
   <div class="main">
     <div class="left">
       <UserAvatar></UserAvatar>
-      <MenuList :iconList="iconList"></MenuList>
+      <MenuList :icon-list="iconList"></MenuList>
       <div class="log-out">
         <MenuItem name="power" @click="logOut"></MenuItem>
       </div>
     </div>
     <div class="right">
+      <!-- 窗口操作栏 -->
+      <div class="window-tools">
+        <!-- 最小化 -->
+        <div class="window-tools__minimize" @click="windowMinimize">
+          <mdicon name="minus" size="20"></mdicon>
+        </div>
+        <!-- 最大化 -->
+        <div class="window-tools__maximize" @click="windowMaximize">
+          <mdicon name="window-maximize" size="20"></mdicon>
+        </div>
+        <!-- 关闭 -->
+        <div class="window-tools__close" @click="windowClose">
+          <mdicon name="window-close" size="20"></mdicon>
+        </div>
+      </div>
+      <!--  -->
       <router-view />
     </div>
   </div>
@@ -20,30 +36,34 @@ import MenuItem from '@renderer/src/components/MenuItem/index.vue'
 
 import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
 import { ElectronWindowType } from '@main/window-type'
-import {IconData} from '@renderer/src/components/MenuList/types';
-import { ref } from 'vue';
+import { IconData } from '@renderer/src/components/MenuList/types'
+import { ref } from 'vue'
 
 const iconList = ref<IconData[]>([
   {
-    id:1,
+    id: 1,
     name: 'message-text',
-    active: true,
+    active: true
   },
   {
-    id:2,
+    id: 2,
     name: 'account',
-    active: false,
+    active: false
   },
   {
-    id:3,
+    id: 3,
     name: 'cog',
-    active: false,
+    active: false
   }
 ])
 
-const logOut = ()=>{
+const logOut = (): void => {
   ElectronWindowHelper.switch(ElectronWindowType.Auth)
 }
+
+const windowMinimize = (): void => {}
+const windowMaximize = (): void => {}
+const windowClose = (): void => {}
 </script>
 
 <style lang="scss" scoped>
@@ -69,10 +89,10 @@ const logOut = ()=>{
       left: 0;
       right: 0;
 
-      :deep(.menu-list__item--hover){
-        &:hover{
+      :deep(.menu-list__item--hover) {
+        &:hover {
           background-color: transparent;
-          .mdi{
+          .mdi {
             color: #003cab;
           }
         }
@@ -82,6 +102,34 @@ const logOut = ()=>{
 
   .right {
     flex: 1;
+    position: relative;
+
+    .window-tools {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 30px;
+      -webkit-app-region: no-drag;
+      display: flex;
+      align-items: center;
+
+      > div {
+        height: 100%;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__minimize:hover,
+      &__maximize:hover {
+        background-color: rgb(227, 227, 227);
+      }
+      &__close:hover {
+        background-color: rgb(251, 115, 115);
+        color: #fff;
+      }
+    }
   }
 }
 </style>

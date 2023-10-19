@@ -23,7 +23,7 @@
 import ElectronWindowHelper from '@renderer/src/shared/helper/electron-window'
 
 // 关闭窗口
-const closeWindow = () => {
+const closeWindow = (): void => {
   ElectronWindowHelper.close()
 }
 </script>
