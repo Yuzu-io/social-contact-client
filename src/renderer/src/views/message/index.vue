@@ -87,7 +87,7 @@ async function demo(): Promise<void> {
         height: 44px;
         font-size: 20px;
         padding: 0 20px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid #ebebeb;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -98,6 +98,7 @@ async function demo(): Promise<void> {
           white-space: nowrap;
           text-overflow: ellipsis;
         }
+
         .more {
           flex: 1;
           display: flex;
@@ -112,6 +113,7 @@ async function demo(): Promise<void> {
         .left {
           width: 70%;
           height: 100%;
+          border-right: 1px solid #ebebeb;
         }
 
         .right {
