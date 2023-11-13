@@ -11,7 +11,7 @@
 
       <SessionList></SessionList>
     </div>
-    <div class="container">
+    <div class="container bg-[#F2F2F2]">
       <div class="chat-window">
         <div class="chat-window__top">
           <div class="title">测试标题</div>
@@ -87,7 +87,7 @@ async function demo(): Promise<void> {
         height: 44px;
         font-size: 20px;
         padding: 0 20px;
-        border-bottom: 1px solid #ebebeb;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -113,7 +113,7 @@ async function demo(): Promise<void> {
         .left {
           width: 70%;
           height: 100%;
-          border-right: 1px solid #ebebeb;
+          border-right: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .right {
