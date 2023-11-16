@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="menu-list__item"
-    :class="{ 'menu-list__item--active': props.active, 'menu-list__item--hover': props.hover }"
-  >
+  <div class="menu-list__item"
+    :class="{ 'menu-list__item--active': props.active, 'menu-list__item--hover': props.hover }">
     <mdicon :name="props.name" :size="props.size"></mdicon>
   </div>
 </template>
@@ -24,11 +22,12 @@ $menu-shadow: #e0e1e2;
 .menu-list__item {
   width: 40px;
   height: 40px;
-  line-height: 40px;
-  text-align: center;
   border-radius: 5px;
   margin: 0 0 10px 0;
   -webkit-app-region: no-drag;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .mdi {
     color: #bdc9e1;
