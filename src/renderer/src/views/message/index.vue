@@ -84,7 +84,7 @@ async function demo(): Promise<void> {
       flex-direction: column;
 
       &__top {
-        height: 44px;
+        height: 43px;
         font-size: 20px;
         padding: 0 20px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
