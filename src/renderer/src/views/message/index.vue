@@ -11,7 +11,7 @@
 
       <SessionList></SessionList>
     </div>
-    <div class="container bg-[#F2F2F2]">
+    <div class="container">
       <div class="chat-window">
         <div class="chat-window__top">
           <div class="title">测试标题</div>
