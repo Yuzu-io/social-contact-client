@@ -4,8 +4,6 @@ import router from './plugins/router'
 
 // 初始化样式
 import './styles/reset.css'
-// 引用Tailwind
-import './styles/tailwind.css'
 // 引入TDesign少量全局样式变量
 import 'tdesign-vue-next/es/style/index.css'
 //  @mdi/font mdi-vue/v3 @mdi/js
